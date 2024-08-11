@@ -3,7 +3,9 @@ import InputValues from "./input/InputValues";
 function App() {
   return (
     <>
-      <InputValues />
+      <div>
+        <InputValues />
+      </div>
     </>
   );
 }

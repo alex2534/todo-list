@@ -22,9 +22,6 @@
   max-width: 16rem;
   border-radius: 8px;
   background-color: #f7f7f7;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 .addBtn {
   margin-left: 0.5rem;

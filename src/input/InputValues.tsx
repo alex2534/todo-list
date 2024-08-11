@@ -72,6 +72,7 @@ export default function InputValues() {
                 value={todosInput}
                 className={styles.userInput}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  e.preventDefault();
                   setTodosInput(e.target.value);
                 }}
               />

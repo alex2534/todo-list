@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineAdd } from "react-icons/md";
@@ -13,6 +13,11 @@ export default function InputValues() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [upId, setUpId] = useState<string>("");
   const [todosInput, setTodosInput] = useState<string>("");
+  const focusOnInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    focusOnInput?.current?.focus();
+  }, [upId]);
 
   const handleTodoList = () => {
     if (!todosInput) return;
@@ -40,10 +45,12 @@ export default function InputValues() {
         },
       ]);
     }
+
     setTodosInput("");
   };
 
   const handleUpdate = (id: string) => {
+    // focusOnInput?.current?.focus();
     if (todos.filter((todo) => todo.id === id)) {
       setUpId(id);
       setTodosInput(todos.filter((todo) => todo.id === id)[0].input);
@@ -51,6 +58,7 @@ export default function InputValues() {
   };
 
   const handleRemove = (id: string) => {
+    // focusOnInput?.current?.focus();
     setTodos(todos.filter((todo) => todo.id !== id));
     setTodosInput("");
   };
@@ -64,6 +72,7 @@ export default function InputValues() {
             <span>
               <input
                 type="text"
+                ref={focusOnInput}
                 autoFocus
                 onBlur={(e) => {
                   e.target.focus();

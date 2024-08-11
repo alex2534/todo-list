@@ -15,7 +15,7 @@ export default function InputValues() {
   const [todosInput, setTodosInput] = useState<string>("");
 
   const handleTodoList = () => {
-    console.log(upId);
+    if (!todosInput) return;
     if (upId) {
       const newTodos = todos.map((todo) => {
         if (todo.id === upId) {
